@@ -1,5 +1,6 @@
 CC      = gcc
-CFLAGS  = -Wall -Wextra -I include
+CFLAGS  = -Wall -Wextra -I include -fsanitize=address -g
+LDFLAGS = -fsanitize=address
 SRC     = $(wildcard src/*.c)
 OBJ     = $(SRC:src/%.c=build/%.o)
 TARGET  = build/main
@@ -10,7 +11,7 @@ run: all
 	./build/main
 
 $(TARGET): $(OBJ)
-	$(CC) $(OBJ) -o $@
+	$(CC) $(LDFLAGS) $(OBJ) -o $@
 
 build/%.o: src/%.c
 	mkdir -p build

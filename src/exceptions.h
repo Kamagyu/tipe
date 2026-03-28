@@ -64,5 +64,6 @@ const char *exc_name(exc_kind k);
 void exc_print(exception e);
 void raise(exception e);
 void failwith(const char* msg);
+void *gc_malloc(size_t size);
 
 #endif
