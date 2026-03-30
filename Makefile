@@ -1,5 +1,5 @@
 CC      = gcc
-CFLAGS  = -Wall -Wextra -I include -fsanitize=address -g
+CFLAGS  = -Wall -Wextra -I include -g
 LDFLAGS = -fsanitize=address
 SRC     = $(wildcard src/*.c)
 OBJ     = $(SRC:src/%.c=build/%.o)
