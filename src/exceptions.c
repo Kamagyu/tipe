@@ -46,12 +46,13 @@ void failwith(const char *msg) {
 }
 
 void *gc_malloc(size_t size) {
-    void *p = malloc(size);
     if (!current) {
         fprintf(stderr, "Use of gc_malloc outside TRY/CATCH is banned, use regular malloc instead.\n");
         abort();
     }
 
+    void *p = malloc(size);
+    // Push at the head of mem_node linked list
     mem_node *node = malloc(sizeof(mem_node));
     node->ptr = p;
     node->next = current->allocs;
