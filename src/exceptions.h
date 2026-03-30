@@ -34,6 +34,7 @@ extern exc_ctx *current;
 #define TRY do { \
     exc_ctx ctx; \
     ctx.prev = current; \
+    ctx.allocs = NULL; \
     current = &ctx; \
     int _exc_flag = setjmp(ctx.buf); \
     if (_exc_flag == 0)
